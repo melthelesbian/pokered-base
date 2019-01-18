@@ -103,7 +103,7 @@ HideSprites::
 INCLUDE "home/copy.asm"
 
 
-SECTION "ColorizationHome",HOME[$be]
+SECTION "ColorizationHome",ROM0[$be]
 
 InitializeColor:
 	cp $11
@@ -3009,7 +3009,7 @@ Bankswitch::
 	ld [MBC1RomBank],a
 	ld bc,.Return
 	push bc
-	jp [hl]
+	jp hl
 .Return
 	pop bc
 	ld a,b
@@ -4516,7 +4516,7 @@ CallFunctionInTable::
 	ld l, a
 	ld de, .returnAddress
 	push de
-	jp [hl]
+	jp hl
 .returnAddress
 	pop bc
 	pop de
@@ -4700,7 +4700,7 @@ CheckForHiddenObjectOrBookshelfOrCardKeyDoor::
 	ld [H_LOADEDROMBANK], a
 	ld de, .returnAddress
 	push de
-	jp [hl]
+	jp hl
 .returnAddress
 	xor a
 	jr .done
@@ -4843,7 +4843,7 @@ InterruptWrapper:
 	ld [rSVBK],a
 	ld de,.ret
 	push de
-	jp [hl]
+	jp hl
 .ret
 	ld a,b
 	ld [rSVBK],a
